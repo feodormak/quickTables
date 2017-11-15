@@ -22,7 +22,7 @@ class CustomCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewD
     private let tabellCellLabelSpacing:CGFloat = 4.0
     private let minRowHeight:CGFloat = 30
     
-    var data: [[String]]? {
+    var data: [[NSAttributedString]]? {
         didSet { if data != nil { tableCollectionView.reloadData() } }
     }
     var parentWidth: CGFloat? {
@@ -81,7 +81,7 @@ class CustomCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableCell.identifier, for: indexPath) as? TableCell {
             if data != nil {
-                cell.cellLabel.text = data![indexPath.section][indexPath.row]
+                cell.cellLabel.attributedText = data![indexPath.section][indexPath.row]
                 return cell
             }
             return UICollectionViewCell()
@@ -128,9 +128,9 @@ class CustomCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewD
         }
     }
     
-    private func maximumLabelWidth(text: String)-> CGFloat {
+    private func maximumLabelWidth(text: NSAttributedString)-> CGFloat {
         let label = UILabel()
-        label.text = text
+        label.attributedText = text
         return label.textRect(forBounds: CGRect(x: 0, y:0, width:UIScreen.main.bounds.width, height: 50), limitedToNumberOfLines: 1).width + 2*tabellCellLabelSpacing
     }
     
@@ -142,7 +142,7 @@ class CustomCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewD
                 if let nibCell = TableCell.fromNib() {
                     nibCell.cellLabel.preferredMaxLayoutWidth = cellMaxWidths[index] - 2 * tabellCellLabelSpacing * CGFloat(cellMaxWidths.count)
                     nibCell.cellLabelWidth.constant = nibCell.cellLabel.preferredMaxLayoutWidth + 2*tabellCellLabelSpacing
-                    nibCell.cellLabel.text = cell
+                    nibCell.cellLabel.attributedText = cell
                     
                     let cellHeight = nibCell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height > minRowHeight ? nibCell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height : minRowHeight
                     rowHeightArray.append(cellHeight)

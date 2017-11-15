@@ -20,7 +20,7 @@ class ViewController: UITableViewController {
     
     let text4 = "<table><tr><td>ATS DATALINK PROVIDER</td><td>LOGON ADDRESS</td><td>AREA OF OPERATION</td><td>DATALINK POSITION REPORT</td><td>DATALINK SERVICE AVAILABLE</td></tr><tr><td>SINGAPORE</td><td>WSJC</td><td>SIN FIR over South China Sea</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>YANGON</td><td>VYYF</td><td>Within YANGON FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>COLOMBO</td><td>VCCF</td><td>Within COLOMBO FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>CHENNAI</td><td>VOMF</td><td>Within CHENNAI FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>KOLKATA</td><td>VECF</td><td>Within KOLKATA FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>FUKUOKA</td><td>RJJJ</td><td>Within FUKUOKA FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>HONG KONG</td><td>VHHH</td><td>Within HONG KONG FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>UJUNG PANDANG</td><td>WAAF</td><td>Within UJUNG PANDANG FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr><tr><td>HO CHI MINH</td><td>WAAF</td><td>Within HO CHI MINH FIR</td><td>At Compulsory* Reporting Points</td><td>CPDLC ADS</td></tr></table>"
     
-    var tableData = [[[String]]]()
+    var tableData = [[[NSAttributedString]]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +29,14 @@ class ViewController: UITableViewController {
         self.tableView.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier)
         
         for textToProcess in [text, text2, text3, text4]{
-            var subArray = [[String]]()
+            var subArray = [[NSAttributedString]]()
             do {
                 let doc = try HTML(html: textToProcess, encoding: .utf8)
                 if let body = doc.body {
                     for row in body.css("tr") {
-                        var subsubArray = [String]()
+                        var subsubArray = [NSAttributedString]()
                         for cell in row.css("td") {
-                            if let cellData = cell.content { subsubArray.append(cellData) }
+                            if let cellData = cell.innerHTML { subsubArray.append(cellData.attributedStringFromHTMLString()) }
                         }
                         subArray.append(subsubArray)
                     }
@@ -54,7 +54,7 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,7 +63,7 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell{
-            cell.data = self.tableData[indexPath.row%4]
+            cell.data = self.tableData[3]
             cell.parentWidth = tableView.frame.width
             return cell
         }
@@ -75,6 +75,20 @@ class ViewController: UITableViewController {
     }
     
     
+}
+
+extension String {
+    func attributedStringFromHTMLString() ->NSAttributedString {
+        let modifiedFont = NSString(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'\">%@</span>" as NSString, self) as String
+        let attrStr = try! NSMutableAttributedString(
+            data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
+            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
+            documentAttributes: nil)
+        if attrStr.string.hasSuffix("\n") {
+            attrStr.mutableString.deleteCharacters(in: attrStr.mutableString.rangeOfComposedCharacterSequence(at: attrStr.mutableString.length - 1))
+         }
+        return attrStr
+    }
 }
 
 extension UILabel {
@@ -96,4 +110,6 @@ extension UILabel {
         self.attributedText = attrStr
         
     }
+    
+    
 }
