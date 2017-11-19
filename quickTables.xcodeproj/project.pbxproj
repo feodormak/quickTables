@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		FE3BFDDF1FBABD2B00C09E72 /* QuickTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3BFDDE1FBABD2B00C09E72 /* QuickTable.swift */; };
 		FE3BFDE11FBABD4A00C09E72 /* QuickTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE3BFDE01FBABD4A00C09E72 /* QuickTable.xib */; };
+		FE3D9DA51FBF1D00000382A9 /* CssParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D9DA01FBF1D00000382A9 /* CssParser.swift */; };
+		FE3D9DA61FBF1D00000382A9 /* SwiftCSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D9DA11FBF1D00000382A9 /* SwiftCSS.swift */; };
+		FE3D9DA71FBF1D00000382A9 /* CssLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D9DA21FBF1D00000382A9 /* CssLexer.swift */; };
+		FE3D9DA81FBF1D00000382A9 /* SwiftDeviceCss.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D9DA31FBF1D00000382A9 /* SwiftDeviceCss.swift */; };
+		FE3D9DA91FBF1D00000382A9 /* SwiftCssTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D9DA41FBF1D00000382A9 /* SwiftCssTheme.swift */; };
+		FE3D9DAB1FBF1D5A000382A9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D9DAA1FBF1D5A000382A9 /* UIColorExtension.swift */; };
 		FEBE56041FBAC45700BD5388 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBE56021FBAC45700BD5388 /* TableCell.swift */; };
 		FEBE56051FBAC45700BD5388 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEBE56031FBAC45700BD5388 /* TableCell.xib */; };
 		FEF682F81FB9818100020845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF682F71FB9818100020845 /* AppDelegate.swift */; };
@@ -26,6 +32,12 @@
 /* Begin PBXFileReference section */
 		FE3BFDDE1FBABD2B00C09E72 /* QuickTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTable.swift; sourceTree = "<group>"; };
 		FE3BFDE01FBABD4A00C09E72 /* QuickTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickTable.xib; sourceTree = "<group>"; };
+		FE3D9DA01FBF1D00000382A9 /* CssParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CssParser.swift; sourceTree = "<group>"; };
+		FE3D9DA11FBF1D00000382A9 /* SwiftCSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCSS.swift; sourceTree = "<group>"; };
+		FE3D9DA21FBF1D00000382A9 /* CssLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CssLexer.swift; sourceTree = "<group>"; };
+		FE3D9DA31FBF1D00000382A9 /* SwiftDeviceCss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDeviceCss.swift; sourceTree = "<group>"; };
+		FE3D9DA41FBF1D00000382A9 /* SwiftCssTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCssTheme.swift; sourceTree = "<group>"; };
+		FE3D9DAA1FBF1D5A000382A9 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FEBE56021FBAC45700BD5388 /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		FEBE56031FBAC45700BD5388 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		FEF682F41FB9818100020845 /* quickTables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quickTables.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE3D9D9F1FBF1CE2000382A9 /* SwiftCSSParser */ = {
+			isa = PBXGroup;
+			children = (
+				FE3D9DA21FBF1D00000382A9 /* CssLexer.swift */,
+				FE3D9DA01FBF1D00000382A9 /* CssParser.swift */,
+				FE3D9DA11FBF1D00000382A9 /* SwiftCSS.swift */,
+				FE3D9DA41FBF1D00000382A9 /* SwiftCssTheme.swift */,
+				FE3D9DA31FBF1D00000382A9 /* SwiftDeviceCss.swift */,
+				FE3D9DAA1FBF1D5A000382A9 /* UIColorExtension.swift */,
+			);
+			path = SwiftCSSParser;
+			sourceTree = "<group>";
+		};
 		FEF682EB1FB9818100020845 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +112,7 @@
 				FEF682FE1FB9818100020845 /* Assets.xcassets */,
 				FEF683001FB9818100020845 /* LaunchScreen.storyboard */,
 				FEF683031FB9818100020845 /* Info.plist */,
+				FE3D9D9F1FBF1CE2000382A9 /* SwiftCSSParser */,
 				FEFD0D1A1FB98B6A006B56AA /* Kanna */,
 			);
 			path = quickTables;
@@ -199,13 +225,19 @@
 			files = (
 				FEBE56041FBAC45700BD5388 /* TableCell.swift in Sources */,
 				FEFD0D231FB98B6A006B56AA /* libxmlHTMLNode.swift in Sources */,
+				FE3D9DAB1FBF1D5A000382A9 /* UIColorExtension.swift in Sources */,
+				FE3D9DA71FBF1D00000382A9 /* CssLexer.swift in Sources */,
 				FEFD0D261FB98B6A006B56AA /* libxmlParserOption.swift in Sources */,
 				FEFD0D241FB98B6A006B56AA /* CSS.swift in Sources */,
+				FE3D9DA51FBF1D00000382A9 /* CssParser.swift in Sources */,
 				FEF682FA1FB9818100020845 /* ViewController.swift in Sources */,
 				FEFD0D251FB98B6A006B56AA /* libxmlHTMLDocument.swift in Sources */,
 				FE3BFDDF1FBABD2B00C09E72 /* QuickTable.swift in Sources */,
+				FE3D9DA61FBF1D00000382A9 /* SwiftCSS.swift in Sources */,
 				FEF682F81FB9818100020845 /* AppDelegate.swift in Sources */,
+				FE3D9DA81FBF1D00000382A9 /* SwiftDeviceCss.swift in Sources */,
 				FEFD0D271FB98B6A006B56AA /* Kanna.swift in Sources */,
+				FE3D9DA91FBF1D00000382A9 /* SwiftCssTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

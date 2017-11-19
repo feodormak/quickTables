@@ -15,6 +15,18 @@ enum QuickTableConstants {
     static let minRowHeight:CGFloat = 30
 }
 
+class QuickTableOptions {
+    let tableBorderWidth: CGFloat
+    let tableBorderColor: UIColor
+    let cellColors: [[IndexPath: UIColor]]
+    
+    init(tableBorderWidth: CGFloat = 1.0, tableBorderColor: UIColor = .black, cellColors:[[IndexPath: UIColor]]) {
+        self.tableBorderWidth = tableBorderWidth
+        self.tableBorderColor = tableBorderColor
+        self.cellColors = cellColors
+    }
+}
+
 class QuickTable: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet private weak var tableCollectionView: UICollectionView!
